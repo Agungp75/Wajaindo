@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #04120b;
+    color: #f8fafc;
+  }
+}
+
+/* 3D Perspective & Multi-Layer Parallax Utilities */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.will-change-scroll3d {
+  will-change: transform, opacity, filter;
+}
+
+/* Depth Layers per Project Plan */
+.layer-base {
+  transform: translateZ(10px);
+  transform-style: preserve-3d;
+}
+
+.layer-mid-ring {
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+}
+
+.layer-mid-text {
+  transform: translateZ(65px);
+  transform-style: preserve-3d;
+}
+
+.layer-character-idle {
+  transform: translateZ(85px) scale(1);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+}
+
+.layer-character-hover {
+  transform: translateZ(130px) scale(1.18);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
+}
+
+/* Hologram Ring Animations */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 18s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinReverse 12s linear infinite;
+}
+
+/* Equalizer Bar Animation */
+@keyframes eqPulse {
+  0%, 100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar-active {
+  animation: eqPulse 0.55s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(3, 18, 10, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.45);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.8);
+}
